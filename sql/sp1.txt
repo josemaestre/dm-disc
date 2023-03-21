@@ -20,7 +20,6 @@
 /*!50003 SET character_set_client  = utf8 */ ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
-
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` FUNCTION `ToCapital`(palabra VARCHAR(20)) RETURNS varchar(20) CHARSET utf8
 BEGIN
@@ -43,13 +42,9 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 DELIMITER ;;
-
-DROP PROCEDURE IF EXISTS antDIM_TIEMPO ;;
-
-CREATE OR REPLACE DEFINER=`root`@`localhost` PROCEDURE `antDIM_TIEMPO`()
+CREATE DEFINER=`root`@`localhost` PROCEDURE `antDIM_TIEMPO`()
 BEGIN
  
-DELETE FROM DIM_TIEMPO;
  SET lc_time_names = 'es_VE';
 SELECT '2016-11-01' INTO @fi; 
 SELECT '2030-12-31' INTO @ff; 
@@ -109,14 +104,13 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
 DELIMITER ;;
-
-CREATE  or replace DEFINER=`dm`@`localhost` PROCEDURE `genTiempo`()
+CREATE DEFINER=`dm`@`localhost` PROCEDURE `genTiempo`()
 BEGIN
  
 DELETE FROM dim_tiempo;
  SET lc_time_names = 'es_VE';
 SELECT '2016-11-01' INTO @fi; 
-SELECT '2030-12-31' INTO @ff; 
+SELECT '2020-12-31' INTO @ff; 
  
  
 WHILE (@fi <= @ff) DO 
@@ -170,4 +164,4 @@ DELIMITER ;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-20 22:04:09
+-- Dump completed on 2023-03-20 22:59:41
