@@ -20,6 +20,7 @@
 /*!50003 SET character_set_client  = utf8 */ ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
+
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` FUNCTION `ToCapital`(palabra VARCHAR(20)) RETURNS varchar(20) CHARSET utf8
 BEGIN
@@ -42,7 +43,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 DELIMITER ;;
-CREATE or replace DEFINER=`root`@`localhost` PROCEDURE `antDIM_TIEMPO`()
+CREATE DEFINER=`root`@`localhost` PROCEDURE `antDIM_TIEMPO`()
 BEGIN
  
 DELETE FROM DIM_TIEMPO;
@@ -105,13 +106,14 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
 DELIMITER ;;
-CREATE DEFINER=`dm`@`localhost` PROCEDURE `genTiempo`()
+
+CREATE  or replace DEFINER=`dm`@`localhost` PROCEDURE `genTiempo`()
 BEGIN
  
 DELETE FROM dim_tiempo;
  SET lc_time_names = 'es_VE';
 SELECT '2016-11-01' INTO @fi; 
-SELECT '2020-12-31' INTO @ff; 
+SELECT '2030-12-31' INTO @ff; 
  
  
 WHILE (@fi <= @ff) DO 
